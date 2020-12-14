@@ -37,11 +37,12 @@ export class UsersService {
     return of(user);
   }
 
-
   changeUser(id: number, newUsername: string) {
-    if (this.users.find(u => u.id === id)){
-      const user: IUserEntity = this.users.find(u => u.id === id);
-      user.username = newUsername;
+    const user: IUserEntity = this.users.find(u => u.id === id);
+    user.username = newUsername;
+    if (this.users.find(u => u.id === id) != undefined){
+      this.users.find(u => u.id === id);
     }
   }
+
 }

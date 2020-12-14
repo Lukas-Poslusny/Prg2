@@ -20,7 +20,7 @@ export class UserCreateComponent implements OnInit {
 
   createUser(): void {
     this.usersService.createUser(this.username)
-      .subscribe(user => this.router.navigateByUrl('/user/create'));
+      .subscribe(user => this.router.navigateByUrl('/users'));
   }
 
 }

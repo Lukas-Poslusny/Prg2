@@ -19,9 +19,14 @@ export class UserDetailComponent implements OnInit {
   ) {  }
 
   changeUser(id: number): void {
-    this.usersService.changeUser(id, this.newUsername);
-    this.router.navigateByUrl('/users');
-    console.error("Username changed.");
+    if (this.newUsername != null) {
+      this.usersService.changeUser(id, this.newUsername);
+      this.router.navigateByUrl('/users');
+      console.log("Username changed.");
+    }
+    else {
+      console.error("Username cannot be null.");
+    }
   }
 
   ngOnInit(): void {
