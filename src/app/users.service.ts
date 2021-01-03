@@ -40,15 +40,14 @@ export class UsersService {
 
   changeUser(id: number, newUsername: string): Observable<IUserEntity> {
     const user: IUserEntity = this.users.find(u => u.id === id);
-    if (user.id === undefined) {
+    if (user === undefined) {
       console.log('No user found.\nid: \'' + id + '\'');
-      return of(user);
     }
     else {
       console.log('Username changed.\nid: \'' + id + '\'\n' + 'username: \'' + user.username + '\' > \'' + newUsername + '\'');
       user.username = newUsername;
-      return of(user);
     }
+    return of(user);
   }
 
 }
