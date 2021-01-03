@@ -22,7 +22,6 @@ export class UserDetailComponent implements OnInit {
   changeUser(id): void {
     this.usersService.changeUser(id, this.newUsername)
       .subscribe(user => this.router.navigateByUrl('/users'));
-
   }
 
   ngOnInit(): void {
