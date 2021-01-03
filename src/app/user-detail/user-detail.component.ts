@@ -12,21 +12,17 @@ export class UserDetailComponent implements OnInit {
   user: IUserEntity;
   newUsername: "";
 
+
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly usersService: UsersService,
     private readonly router: Router
   ) {  }
 
-  changeUser(id: number): void {
-    if (this.newUsername != null) {
-      this.usersService.changeUser(id, this.newUsername);
-      this.router.navigateByUrl('/users');
-      console.log("Username changed.");
-    }
-    else {
-      console.error("Username cannot be null.");
-    }
+  changeUser(id): void {
+    this.usersService.changeUser(id, this.newUsername)
+      .subscribe(user => this.router.navigateByUrl('/users'));
+
   }
 
   ngOnInit(): void {

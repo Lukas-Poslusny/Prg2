@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 
 export interface IUserEntity {
@@ -34,14 +34,18 @@ export class UsersService {
     const id = ++this.nextId;
     const user = {id, username};
     this.users.push(user);
+    console.log('User created.\n' + 'id: \'' + id + '\'\nusername: \'' + user.username + '\'');
     return of(user);
   }
 
-  changeUser(id: number, newUsername: string) {
+  changeUser(id: number, newUsername: string): Observable<IUserEntity> {
     const user: IUserEntity = this.users.find(u => u.id === id);
-    user.username = newUsername;
-    if (this.users.find(u => u.id === id) != undefined){
-      this.users.find(u => u.id === id);
+    if (user.id === id) {
+      console.log('Username changed.\nid: \'' + id + '\'\n' + 'username: \'' + user.username + '\' > \'' + newUsername + '\'');
+      user.username = newUsername;
+      return of(user);
+    } else {
+      console.log('No user found.\nid: \'' + id + '\'');
     }
   }
 
