@@ -8,7 +8,7 @@
   <tbody>
   <tr *ngFor="let users of users" [routerLink]="'/user/' + users.id" class="pointer">
     <td>{{users.id}}</td>
-    <td>{{users.username | shortenName:6: ".."}}</td>
+    <td>{{users.username | shortenName:8: ".."}}</td>
   </tr>
   </tbody>
 </table>

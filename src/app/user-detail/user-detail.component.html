@@ -2,9 +2,15 @@
   <h2 class="display-4">username: {{user?.username}}</h2>
   <h1 class="display-4">id: {{user?.id}}</h1>
 
-  <form>
+  <form #form="ngForm">
     <div class="form-group">
-      <input type="newUsername" name="newUsername" [(ngModel)] ="newUsername" class="form-control" id="exampleInputName1" placeholder="Username">
+      <input type="newUsername" name="newUsername" [(ngModel)] ="newUsername" class="form-control" id="exampleInputName1" placeholder="Username"
+             #usernameEl="ngModel" required minlength="3" maxlength="10">
+      <div *ngIf="usernameEl.invalid && usernameEl.touched">
+        <span *ngIf="usernameEl.errors.required">Username required.</span>
+        <span *ngIf="usernameEl.errors.minlength">Minimal length required is {{usernameEl.errors.minlength.requiredLength}}</span>
+        <span *ngIf="usernameEl.errors.maxlength">Maximal length is {{usernameEl.errors.maxlength}}</span>
+      </div>
     </div>
     <button type="submit" class="btn btn-secondary" (click)="changeUser(user.id)">Submit</button>
   </form>
