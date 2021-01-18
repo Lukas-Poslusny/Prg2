@@ -8,7 +8,7 @@
              #usernameEl="ngModel" required minlength="3" maxlength="10">
       <div *ngIf="usernameEl.invalid && usernameEl.touched">
         <span *ngIf="usernameEl.errors.required">Username required.</span>
-        <span *ngIf="usernameEl.errors.minlength">Minimal length required is {{usernameEl.errors.minlength.requiredLength}}</span>
+        <span *ngIf="usernameEl.errors.min.requiredLength">Minimal length required is {{usernameEl.errors.minlength.requiredLength}}</span>
         <span *ngIf="usernameEl.errors.maxlength">Maximal length is {{usernameEl.errors.maxlength}}</span>
       </div>
     </div>
